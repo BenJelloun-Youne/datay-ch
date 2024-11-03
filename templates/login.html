@@ -2,26 +2,81 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rend l'affichage adaptatif -->
-    <title>Connexion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connexion - DATAY</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Animation de fade-in */
+        .fade-in {
+            animation: fadeIn 1.5s ease-in-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Style de la boîte de connexion */
+        .login-box {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Style du logo */
+        .logo {
+            max-width: 100px;
+            margin-bottom: 1rem;
+            animation: bounceIn 1.2s;
+        }
+
+        /* Animation de bounce pour le logo */
+        @keyframes bounceIn {
+            0% { transform: scale(0.5); opacity: 0; }
+            70% { transform: scale(1.2); opacity: 0.9; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
-        <div class="col-md-6 col-lg-4 col-12">
-            <h2 class="text-center mb-4">Connexion à DATAY</h2>
-            <form method="post">
-                <div class="mb-3">
-                    <label for="username" class="form-label">Nom d'utilisateur :</label>
-                    <input type="text" name="username" class="form-control" required>
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Mot de passe :</label>
-                    <input type="password" name="password" class="form-control" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Se connecter</button> <!-- Bouton pleine largeur -->
-            </form>
+<body class="bg-light d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
+
+    <!-- Boîte de connexion avec logo et animation -->
+    <div class="login-box fade-in col-md-6 col-lg-4 col-12 text-center">
+        <img src="Datay VF.png" alt="Logo DATAY" class="logo">
+        <h2 class="mb-4">Connexion à DATAY</h2>
+        
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur :</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe :</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <button type="submit" class="btn btn-primary w-100">Se connecter</button>
+        </form>
+
+        <!-- Section pour prendre RDV -->
+        <div class="my-4">
+            <h5>Prendre un rendez-vous pour un achat</h5>
+            <p>Contactez-nous via WhatsApp :</p>
+            <a href="https://wa.me/33677564953" class="btn btn-success w-100">
+                <i class="fab fa-whatsapp"></i> Réserver sur WhatsApp
+            </a>
         </div>
     </div>
+
+    <!-- Pied de page -->
+    <footer class="text-center text-muted mt-5 fade-in">
+        <p>&copy; 2024 DATAY. Tous droits réservés.</p>
+        <p>Conforme au RGPD - Toutes les données sont protégées.</p>
+        <a href="https://datay.ch" class="text-decoration-none">Visitez notre site officiel : datay.ch</a>
+    </footer>
+
+    <!-- Scripts Bootstrap et FontAwesome -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
