@@ -262,7 +262,32 @@ def manage_users():
             flash(f"Utilisateur {username} ajouté avec succès")
 
     return render_template("manage_users.html", users=users)
-    
+@app.route("/edit_user/<int:user_id>", methods=["GET", "POST"])
+def edit_user(user_id):
+    if "role" not in session or session["role"] != "admin":
+        return redirect(url_for("dashboard"))  # Rediriger si non admin
+
+    user = db_session.query(User).filter_by(id=user_id).first()
+    if not user:
+        flash("Utilisateur introuvable.")
+        return redirect(url_for("manage_users"))
+
+    if request.method == "POST":
+        new_username = request.form.get("username")
+        new_password = request.form.get("password")
+
+        # Mettre à jour les informations de l'utilisateur
+        if new_username:
+            user.username = new_username
+        if new_password:
+            user.password = new_password  # Pensez à hasher le mot de passe ici
+
+        db_session.commit()
+        flash("Informations de l'utilisateur mises à jour avec succès.")
+        return redirect(url_for("manage_users"))
+
+    return render_template("edit_user.html", user=user)
+
 @app.route("/delete_user/<int:user_id>", methods=["POST"])
 def delete_user(user_id):
     if "role" not in session or session["role"] != "admin":
