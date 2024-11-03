@@ -2,30 +2,33 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ajouter un utilisateur</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-    <div class="container py-5">
-        <h2>Ajouter un utilisateur</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur:</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe:</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="role" class="form-label">Rôle:</label>
-                <select name="role" class="form-select">
-                    <option value="user">Utilisateur</option>
-                    <option value="admin">Administrateur</option>
-                </select>
-            </div>
-            <button type="submit" class="btn btn-success">Ajouter</button>
-        </form>
+<body class="bg-light">
+    <div class="container d-flex justify-content-center align-items-center" style="min-height: 100vh;">
+        <div class="col-md-6 col-lg-4 col-12">
+            <h2 class="text-center mb-4">Ajouter un utilisateur</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nom d'utilisateur :</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe :</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="role" class="form-label">Rôle :</label>
+                    <select name="role" class="form-select">
+                        <option value="user">Utilisateur</option>
+                        <option value="admin">Administrateur</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn btn-success w-100">Ajouter</button>
+            </form>
+        </div>
     </div>
 </body>
 </html>

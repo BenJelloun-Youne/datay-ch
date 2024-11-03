@@ -12,10 +12,10 @@
         <h2 class="text-center mb-4">Bienvenue, {{ session["username"] }}</h2>
         
         <!-- Formulaire de sélection de canton et rue -->
-        <h3>Sélectionnez un canton et une rue</h3>
+        <h3 class="text-center">Sélectionnez un canton et une rue</h3>
         <form method="post" action="{{ url_for('run_scrape') }}">
             <div class="row mb-3">
-                <div class="col-md-6">
+                <div class="col-md-6 col-12 mb-3">
                     <label for="canton" class="form-label">Canton :</label>
                     <select id="canton" name="canton" class="form-select">
                         <option value="">--Sélectionnez un canton--</option>
@@ -25,66 +25,69 @@
                     </select>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 col-12 mb-3">
                     <label for="rue" class="form-label">Rue :</label>
                     <select id="rue" name="rue" class="form-select">
                         <option value="">--Sélectionnez une rue--</option>
                     </select>
                 </div>
             </div>
-
-            <button type="submit" class="btn btn-primary">Lancer le scraping</button>
+            <button type="submit" class="btn btn-primary w-100">Lancer le scraping</button>
         </form>
 
         <!-- Carte des contacts -->
-        <h3 class="mt-5">Carte des contacts</h3>
-        <iframe id="mapFrame" src="{{ url_for('static', filename=map_path) }}" width="100%" height="400" class="border"></iframe>
-        <div class="mt-3">
-            <a href="{{ url_for('show_map') }}" class="btn btn-secondary">Afficher la carte des contacts</a>
+        <h3 class="mt-5 text-center">Carte des contacts</h3>
+        <div class="ratio ratio-16x9">
+            <iframe id="mapFrame" src="{{ url_for('static', filename=map_path) }}" class="border"></iframe>
+        </div>
+        <div class="mt-3 text-center">
+            <a href="{{ url_for('show_map') }}" class="btn btn-secondary me-2">Afficher la carte des contacts</a>
             {% if session["role"] == "admin" %}
-                <a href="{{ url_for('add_user') }}" class="btn btn-info">Ajouter un utilisateur</a>
+                <a href="{{ url_for('add_user') }}" class="btn btn-info me-2">Ajouter un utilisateur</a>
             {% endif %}
             <a href="{{ url_for('logout') }}" class="btn btn-danger">Déconnexion</a>
         </div>
 
         <!-- Fiche de contact pour le traitement des contacts extraits -->
-        <h3 class="mt-5">Fiches des Contacts Extraits</h3>
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th>Prénom</th>
-                    <th>Nom</th>
-                    <th>Adresse</th>
-                    <th>Téléphone</th>
-                    <th>Qualification</th>
-                    <th>Traité</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for contact in contacts %}
-                {% if not contact.traitement %}
-                <tr>
-                    <td>{{ contact.prenom }}</td>
-                    <td>{{ contact.nom }}</td>
-                    <td>{{ contact.adresse }}</td>
-                    <td>{{ contact.telephone }}</td>
-                    <td>
-                        <form method="post" action="{{ url_for('qualify_contact', contact_id=contact.id) }}">
-                            <input type="text" name="qualification" class="form-control" value="{{ contact.qualification or '' }}" placeholder="Qualifiez...">
-                    </td>
-                    <td>
-                        <input type="checkbox" name="traitement" value="1" {% if contact.traitement %}checked{% endif %}>
-                    </td>
-                    <td>
-                        <button type="submit" class="btn btn-primary">Enregistrer</button>
-                        </form>
-                    </td>
-                </tr>
-                {% endif %}
-                {% endfor %}
-            </tbody>
-        </table>
+        <h3 class="mt-5 text-center">Fiches des Contacts Extraits</h3>
+        <div class="table-responsive">
+            <table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>Prénom</th>
+                        <th>Nom</th>
+                        <th>Adresse</th>
+                        <th>Téléphone</th>
+                        <th>Qualification</th>
+                        <th>Traité</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for contact in contacts %}
+                    {% if not contact.traitement %}
+                    <tr>
+                        <td>{{ contact.prenom }}</td>
+                        <td>{{ contact.nom }}</td>
+                        <td>{{ contact.adresse }}</td>
+                        <td>{{ contact.telephone }}</td>
+                        <td>
+                            <form method="post" action="{{ url_for('qualify_contact', contact_id=contact.id) }}">
+                                <input type="text" name="qualification" class="form-control" value="{{ contact.qualification or '' }}" placeholder="Qualifiez...">
+                        </td>
+                        <td>
+                            <input type="checkbox" name="traitement" value="1" {% if contact.traitement %}checked{% endif %}>
+                        </td>
+                        <td>
+                            <button type="submit" class="btn btn-primary">Enregistrer</button>
+                            </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
     </div>
 
     <script>

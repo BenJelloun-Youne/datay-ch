@@ -1,72 +1,64 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
-    
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    
-        <script>
-            L_NO_TOUCH = false;
-            L_DISABLE_3D = false;
-        </script>
-    
-    <style>html, body {width: 100%;height: 100%;margin: 0;padding: 0;}</style>
-    <style>#map {position:absolute;top:0;bottom:0;right:0;left:0;}</style>
-    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Carte des Contacts</title>
+
+    <!-- Styles généraux -->
+    <style>html, body {width: 100%; height: 100%; margin: 0; padding: 0;}</style>
+    <style>#map {position: absolute; top: 0; bottom: 0; right: 0; left: 0;}</style>
+
+    <!-- Leaflet et Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
     <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css"/>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css"/>
-    
-            <meta name="viewport" content="width=device-width,
-                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-            <style>
-                #map_8e4e56e348353f130e4d08018e3f85d6 {
-                    position: relative;
-                    width: 100.0%;
-                    height: 100.0%;
-                    left: 0.0%;
-                    top: 0.0%;
-                }
-                .leaflet-container { font-size: 1rem; }
-            </style>
-        
+
+    <!-- JavaScript Leaflet et jQuery -->
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+
+    <!-- Style spécifique de la carte -->
+    <style>
+        #map_8e4e56e348353f130e4d08018e3f85d6 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+        .leaflet-container { font-size: 1rem; }
+    </style>
 </head>
 <body>
-    
-    
-            <div class="folium-map" id="map_8e4e56e348353f130e4d08018e3f85d6" ></div>
-        
+
+    <!-- Conteneur pour les boutons en haut de la carte -->
+    <div class="container-fluid position-absolute top-0 start-0 p-3 d-flex justify-content-between" style="z-index: 1000;">
+        <a href="{{ url_for('dashboard') }}" class="btn btn-primary">Retour au Dashboard</a>
+        <a href="{{ url_for('logout') }}" class="btn btn-danger">Déconnexion</a>
+    </div>
+
+    <!-- Carte Leaflet -->
+    <div id="map_8e4e56e348353f130e4d08018e3f85d6" class="folium-map"></div>
+
+    <script>
+        // Initialisation de la carte Leaflet
+        var map = L.map("map_8e4e56e348353f130e4d08018e3f85d6", {
+            center: [46.8182, 8.2275],
+            zoom: 7,
+            zoomControl: true,
+            preferCanvas: false
+        });
+
+        // Ajout de la couche de tuiles OpenStreetMap
+        L.tileLayer("https://tile.openstreetmap.org/{z}/{x}/{y}.png", {
+            attribution: "&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors",
+            maxZoom: 19,
+            minZoom: 0
+        }).addTo(map);
+    </script>
 </body>
-<script>
-    
-    
-            var map_8e4e56e348353f130e4d08018e3f85d6 = L.map(
-                "map_8e4e56e348353f130e4d08018e3f85d6",
-                {
-                    center: [46.8182, 8.2275],
-                    crs: L.CRS.EPSG3857,
-                    zoom: 7,
-                    zoomControl: true,
-                    preferCanvas: false,
-                }
-            );
-
-            
-
-        
-    
-            var tile_layer_a46a686c18748c53f29da83601c55f7f = L.tileLayer(
-                "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
-                {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors", "detectRetina": false, "maxNativeZoom": 19, "maxZoom": 19, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abc", "tms": false}
-            );
-        
-    
-            tile_layer_a46a686c18748c53f29da83601c55f7f.addTo(map_8e4e56e348353f130e4d08018e3f85d6);
-        
-</script>
 </html>

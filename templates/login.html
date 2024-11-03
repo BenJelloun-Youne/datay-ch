@@ -2,23 +2,26 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Rend l'affichage adaptatif -->
     <title>Connexion</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body class="bg-light">
-    <div class="container py-5">
-        <h2 class="text-center mb-4">Connexion à DATAY</h2>
-        <form method="post">
-            <div class="mb-3">
-                <label for="username" class="form-label">Nom d'utilisateur :</label>
-                <input type="text" name="username" class="form-control" required>
-            </div>
-            <div class="mb-3">
-                <label for="password" class="form-label">Mot de passe :</label>
-                <input type="password" name="password" class="form-control" required>
-            </div>
-            <button type="submit" class="btn btn-primary">Se connecter</button>
-        </form>
+    <div class="container d-flex align-items-center justify-content-center" style="min-height: 100vh;">
+        <div class="col-md-6 col-lg-4 col-12">
+            <h2 class="text-center mb-4">Connexion à DATAY</h2>
+            <form method="post">
+                <div class="mb-3">
+                    <label for="username" class="form-label">Nom d'utilisateur :</label>
+                    <input type="text" name="username" class="form-control" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Mot de passe :</label>
+                    <input type="password" name="password" class="form-control" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Se connecter</button> <!-- Bouton pleine largeur -->
+            </form>
+        </div>
     </div>
 </body>
 </html>
