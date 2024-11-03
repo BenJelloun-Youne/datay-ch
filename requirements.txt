@@ -12,3 +12,4 @@ folium
 geopy
 selenium
 openpyxl
+gunicorn
