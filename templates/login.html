@@ -9,7 +9,7 @@
     <style>
         /* Animation de fade-in */
         .fade-in {
-            animation: fadeIn 1.5s ease-in-out;
+            animation: fadeIn 1s ease-in-out;
         }
         
         @keyframes fadeIn {
@@ -19,15 +19,16 @@
 
         /* Style de la boîte de connexion */
         .login-box {
-            background: white;
+            background: rgba(255, 255, 255, 0.9);
             padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
         }
 
         /* Style du logo */
         .logo {
-            max-width: 100px;
+            max-width: 120px;
             margin-bottom: 1rem;
             animation: bounceIn 1.2s;
         }
@@ -35,15 +36,30 @@
         /* Animation de bounce pour le logo */
         @keyframes bounceIn {
             0% { transform: scale(0.5); opacity: 0; }
-            70% { transform: scale(1.2); opacity: 0.9; }
+            70% { transform: scale(1.1); opacity: 0.9; }
             100% { transform: scale(1); opacity: 1; }
+        }
+
+        /* Style des boutons */
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #0056b3;
+        }
+
+        footer {
+            font-size: 0.9em;
         }
     </style>
 </head>
 <body class="bg-light d-flex flex-column justify-content-center align-items-center" style="min-height: 100vh;">
 
     <!-- Boîte de connexion avec logo et animation -->
-    <div class="login-box fade-in col-md-6 col-lg-4 col-12 text-center">
+    <div class="login-box fade-in col-md-8 col-lg-5 col-12 text-center">
         <img src="https://raw.githubusercontent.com/BenJelloun-Youne/datay-ch/main/templates/datay_logo.png" alt="DATAY" class="logo">
 
         <h2 class="mb-4">Connexion à DATAY</h2>
@@ -62,7 +78,7 @@
 
         <!-- Section pour prendre RDV -->
         <div class="my-4">
-            <h5>Prendre un rendez-vous pour un achat</h5>
+            <h5 class="mb-2">Prendre un rendez-vous pour un achat</h5>
             <p>Contactez-nous via WhatsApp :</p>
             <a href="https://wa.me/41765088387" class="btn btn-success w-100">
                 <i class="fab fa-whatsapp"></i> Réserver sur WhatsApp
