@@ -241,6 +241,42 @@ def add_user():
         return redirect(url_for("dashboard"))
 
     return render_template("add_user.html")
+# Route pour gérer les utilisateurs (admin uniquement)
+@app.route("/manage_users", methods=["GET", "POST"])
+def manage_users():
+    if "role" not in session or session["role"] != "admin":
+        return redirect(url_for("dashboard"))  # Rediriger si non admin
+
+    users = db_session.query(User).all()  # Récupérer tous les utilisateurs
+
+    if request.method == "POST":
+        # Ici, vous pouvez ajouter la logique pour créer ou modifier des utilisateurs
+        username = request.form.get("username")
+        password = request.form.get("password")
+        role = request.form.get("role")
+
+        if username and password:
+            new_user = User(username=username, password=password, role=role)
+            db_session.add(new_user)
+            db_session.commit()
+            flash(f"Utilisateur {username} ajouté avec succès")
+
+    return render_template("manage_users.html", users=users)
+    
+@app.route("/delete_user/<int:user_id>", methods=["POST"])
+def delete_user(user_id):
+    if "role" not in session or session["role"] != "admin":
+        return redirect(url_for("dashboard"))  # Rediriger si non admin
+
+    user_to_delete = db_session.query(User).filter_by(id=user_id).first()
+    if user_to_delete:
+        db_session.delete(user_to_delete)
+        db_session.commit()
+        flash("Utilisateur supprimé avec succès.")
+    else:
+        flash("Utilisateur introuvable.")
+
+    return redirect(url_for("manage_users"))
 
 # Route pour se déconnecter
 @app.route("/logout")

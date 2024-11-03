@@ -74,6 +74,7 @@
         <div class="mt-3 text-center">
             <a href="{{ url_for('show_map') }}" class="btn btn-secondary me-2">Afficher la carte des contacts</a>
             {% if session["role"] == "admin" %}
+                <a href="{{ url_for('manage_users') }}" class="btn btn-info me-2">Gérer les utilisateurs</a>
                 <a href="{{ url_for('add_user') }}" class="btn btn-info me-2">Ajouter un utilisateur</a>
             {% endif %}
             <a href="{{ url_for('logout') }}" class="btn btn-danger">Déconnexion</a>
