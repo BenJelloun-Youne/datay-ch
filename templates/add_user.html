@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Ajouter un utilisateur</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container py-5">
+        <h2>Ajouter un utilisateur</h2>
+        <form method="post">
+            <div class="mb-3">
+                <label for="username" class="form-label">Nom d'utilisateur:</label>
+                <input type="text" name="username" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="password" class="form-label">Mot de passe:</label>
+                <input type="password" name="password" class="form-control" required>
+            </div>
+            <div class="mb-3">
+                <label for="role" class="form-label">Rôle:</label>
+                <select name="role" class="form-select">
+                    <option value="user">Utilisateur</option>
+                    <option value="admin">Administrateur</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Ajouter</button>
+        </form>
+    </div>
+</body>
+</html>

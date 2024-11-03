@@ -1,0 +1,14 @@
+Flask
+SQLAlchemy
+pandas
+folium
+geopy
+selenium
+openpyxl
+Flask
+SQLAlchemy
+pandas
+folium
+geopy
+selenium
+openpyxl

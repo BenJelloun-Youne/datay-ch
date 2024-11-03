@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <style>html, body {width: 100%; height: 100%; margin: 0; padding: 0;}</style>
+    <style>#map {position: absolute; top: 0; bottom: 0; right: 0; left: 0;}</style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css"/>
+    <style>
+        #map_52c497267216e49d61dd8bec8df94748 {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="folium-map" id="map_52c497267216e49d61dd8bec8df94748"></div>
+<script>
+    var map_52c497267216e49d61dd8bec8df94748 = L.map("map_52c497267216e49d61dd8bec8df94748", {
+        center: [46.8182, 8.2275],
+        crs: L.CRS.EPSG3857,
+        zoom: 7,
+        zoomControl: true,
+        preferCanvas: false,
+    });
+
+    var tile_layer_a9ee1924f64f47e9ef8fdc100b5baef3 = L.tileLayer(
+        "https://tile.openstreetmap.org/{z}/{x}/{y}.png",
+        {
+            attribution: "&copy; <a href=\"https://www.openstreetmap.org/copyright\">OpenStreetMap</a> contributors",
+            maxZoom: 19,
+            minZoom: 0,
+            opacity: 1
+        }
+    );
+
+    tile_layer_a9ee1924f64f47e9ef8fdc100b5baef3.addTo(map_52c497267216e49d61dd8bec8df94748);
+</script>
+</body>
+</html>
